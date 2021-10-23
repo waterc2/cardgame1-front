@@ -1,0 +1,31 @@
+{
+    "gameBase": {
+        "cardPackageName1": "普通卡包",
+        "cardPackageName2": "高级卡包",
+        "cardPackageName3": "稀有卡包",
+        "cardPackageName13": "普通卡袋",
+        "cardPackageName23": "高级卡袋",
+        "cardPackageName33": "稀有卡袋",
+        "cardPackageName110": "普通卡盒",
+        "cardPackageName210": "高级卡盒",
+        "cardPackageName310": "稀有卡盒",
+        "cardClassName_2": "野兽",
+        "cardValue": "价值",
+        "cardClassName_2_Desc": "当场上有超过两个野兽的时候，每个野兽可以增加5%的攻击力",
+        "cardAbrasionTitle": "卡牌能量",
+        "cardAbrasionDesc": "卡牌进入战场，损失生命，重伤，昏迷以及使用特别技能都会降低能量。当能量降为零，卡牌会消失。",
+        "cardCostTitle": "消耗能量水晶",
+        "cardCostDesc": "卡牌需要使用能量水晶才能进入战场",
+        "cardDamageTitle": "伤害",
+        "cardDamageDesc": "直接对能量体造成的伤害"
+
+    },
+    "common": {
+        "close": "关闭",
+        "open": "打开",
+        "nextCard": "下一张",
+        "decompose": "分解",
+        "putIntoHand": "放入手牌",
+        "theLastCard": "最后一张"
+    }
+}

@@ -1,0 +1,54 @@
+<div class="mx-auto d-block" style="height: {{specialHeight}}px;width: 350px;zoom:{{cardSize}}%">
+  <div class="d-block" style="height: {{specialHeight}}px;width: 350px;">
+    <div class="d-block" style="height: 400px;width: 350px;">
+      <img src="{{card.image}}" class="cardImage">
+      <img src="{{frameImage[card.rarity]}}" class="cardFrame">
+      <p class="cardTitle" [ngStyle]="{'color': titleColor}" role="button" placement="top"
+        popoverTitle="{{className | translate}}" ngbPopover="{{className+'_Desc' | translate}}">{{card.name}}
+        [{{className
+        | translate}}]</p>
+      <div class="cardAbrasion" placement="top" popoverTitle="{{'gameBase.cardAbrasionTitle' | translate}}"
+        ngbPopover="{{'gameBase.cardAbrasionDesc' | translate}}">
+        <span class="badge rounded-pill" *ngIf="card.abrasion" role="button">{{card.abrasion}}</span>
+      </div>
+      <span class="cardCost" role="button" placement="top" popoverTitle="{{'gameBase.cardCostTitle' | translate}}"
+        ngbPopover="{{'gameBase.cardCostDesc' | translate}}">
+        <fa-icon *ngFor="let i of [].constructor(card.cost)" [icon]="faGem"></fa-icon>
+      </span>
+      <span class="cardDamage" role="button" placement="top" popoverTitle="{{'gameBase.cardDamageTitle' | translate}}"
+        ngbPopover="{{'gameBase.cardDamageDesc' | translate}}">
+        <fa-icon *ngFor="let i of [].constructor(card.damage)" [icon]="faDotCircle"></fa-icon>
+      </span>
+
+      <span class="badge cardMelee {{meleeColor}}" role="button">
+        <img src="{{iconMelee}}" style="height: 18px;"> {{card.melee}}
+      </span>
+      <div class="cardRange">
+        <span role="button" class="badge {{rangeColor}}" *ngIf="card.range"><img src="{{iconRange}}"
+            style="height: 18px;"> {{card.range}}</span>
+      </div>
+      <span class="badge cardDefense {{defenseColor}}" role="button">
+        <img src="{{iconDefense}}" style="height: 18px;"> {{card.defense}}
+      </span>
+      <span class="badge cardSpeed {{speedColor}}" role="button">
+        <img src="{{iconSpeed}}" style="height: 18px;"> {{card.speed}}
+      </span>
+      <div class="cardEnergy">
+        <span *ngIf="card.energy" class="badge rounded-pill" role="button">
+          <img src="{{iconMagic}}" style="height: 20px;"> {{card.energy}}
+        </span>
+      </div>
+      <span class="badge rounded-pill cardHealth" role="button">
+        <img src="{{iconHealth}}" style="height: 20px;"> {{card.health}} <span
+          class="cardExhaust">{{card.exhaust}}</span>
+      </span>
+    </div>
+    <div class="cardSkill">
+      <span class="cardSkillCell">
+        <span *ngFor="let skill of card.skills" role="button" class="cardSkillIcon" placement="top" ngbPopover="{{skill.desc}}" container="body">
+          <fa-icon [icon]="getIcon(skill.icon)" style="color: {{skill.color}}"></fa-icon>
+        </span>
+      </span>
+    </div>
+  </div>
+</div>

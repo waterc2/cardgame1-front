@@ -1,0 +1,12 @@
+<app-cardDisplay [card]=card [cardSize]=100></app-cardDisplay>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark btn-lg" disabled>
+    {{'common.decompose' |translate}}
+  </button>
+  <button type="button" class="btn btn-primary btn-lg" (click)="putIntoHand()">
+    {{'common.putIntoHand' |translate}}
+  </button>
+  <button type="button" class="btn btn-outline-dark me-md-2 btn-lg"
+    (click)="activeModal.close('Close click')">{{'common.close' | translate}}</button>
+</div>

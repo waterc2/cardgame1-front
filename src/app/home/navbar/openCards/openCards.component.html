@@ -1,0 +1,13 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <div>
+
+  </div>
+  <div *ngIf="allCards">
+    <div class="allCardGrid" *ngFor="let card of allCards;index as i" role="button" (click)="cardWindow(i)"
+      [@animateDestroy]>
+      <app-cardDisplaySmall [card]=card [cardSize]=100></app-cardDisplaySmall>
+    </div>
+  </div>
+</div>

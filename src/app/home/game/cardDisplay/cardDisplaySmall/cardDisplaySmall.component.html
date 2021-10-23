@@ -1,0 +1,47 @@
+<div class="mx-auto d-block cardBaseSizeSmall cardScreenSize">
+  <div class="d-block cardBaseSizeSmall">
+    <div class="d-block cardBaseSizeSmall">
+      <img src="{{card.image}}" class="cardImage">
+      <img src="{{frameImage[card.rarity]}}" class="cardFrame">
+      <p class="cardTitle" [ngStyle]="{'color': titleColor}">{{card.name}} [{{className| translate}}]</p>
+      <div class="cardPosition cardAbrasion">
+        <span class="badge rounded-pill" *ngIf="card.abrasion">{{card.abrasion}}</span>
+      </div>
+      <span class="cardPosition cardCost">
+        <fa-icon *ngFor="let i of [].constructor(card.cost)" [icon]="faGem"></fa-icon>
+      </span>
+      <span class="cardPosition cardDamage">
+        <fa-icon *ngFor="let i of [].constructor(card.damage)" [icon]="faDotCircle"></fa-icon>
+      </span>
+
+      <span class="cardPosition badge cardMelee">
+        {{card.melee}}
+      </span>
+      <div class="cardPosition cardRange">
+        <span class="badge" *ngIf="card.range">
+          {{card.range}}</span>
+      </div>
+      <span class="cardPosition badge cardDefense">
+        {{card.defense}}
+      </span>
+      <span class="cardPosition badge cardSpeed">
+        {{card.speed}}
+      </span>
+      <div class="cardPosition cardEnergy">
+        <span *ngIf="card.energy" class="badge rounded-pill">
+          {{card.energy}}
+        </span>
+      </div>
+      <span class="cardPosition badge rounded-pill cardHealth">
+        {{card.health}}
+      </span>
+    </div>
+    <div class="cardPosition cardSkill">
+      <span class="cardSkillCell">
+        <span *ngFor="let skill of card.skills" class="cardSkillIcon">
+          <fa-icon [icon]="getIcon(skill.icon)" style="color: {{skill.color}}"></fa-icon>
+        </span>
+      </span>
+    </div>
+  </div>
+</div>

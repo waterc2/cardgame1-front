@@ -1,0 +1,13 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <ng-container *ngIf="availablePackages.length > 0; else elseBlock" >
+    <div class="row row-cols-4">
+      <div *ngFor="let item of availablePackages; index as i;" class="col">
+        <img src="{{item.image}}" class="img-fluid" role="button" (click)="open(item)">
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #elseBlock>
+    <h1 class="d-flex justify-content-center">No package!</h1>
+  </ng-template>
+</div>
