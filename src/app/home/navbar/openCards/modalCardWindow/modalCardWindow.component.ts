@@ -9,13 +9,13 @@ import { baseCardMode } from 'src/app/share/models'
 })
 export class ModalCardWindowComponent implements OnInit {
   @Input() card: baseCardMode;
+  @Input() buttons: number;
 
   constructor(
     public activeModal: NgbActiveModal
   ) { }
 
   ngOnInit() {
-    console.log(this.card);
   }
   putIntoHand(){
     this.activeModal.dismiss('putIntoHand');

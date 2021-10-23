@@ -48,10 +48,21 @@ export class ApiService {
     return this.httpClient.get<any>(`${this.baseUrl}/api/getAllMyCards`);
   }
 
+  getAllHandCards$()
+  {
+    return this.httpClient.get<any>(`${this.baseUrl}/api/getAllHandCards`);
+  }
+
   postOpenPackage$(p_id:number)
   {
     let reqData = { "p_id": p_id};
     return this.httpClient.post<any>(`${this.baseUrl}/api/openPackage`, reqData);    
+  }
+
+  postPutCardToHand$(c_id:number)
+  {
+    let reqData = { "c_id": c_id};
+    return this.httpClient.post<any>(`${this.baseUrl}/api/putCardToHand`, reqData);    
   }
 
 }

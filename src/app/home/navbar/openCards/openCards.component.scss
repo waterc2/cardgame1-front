@@ -1,4 +1,18 @@
-.allCardGrid{
-    display: inline-grid;
-    position: relative;
+.allCardGrid {
+  display: inline-grid;
+  position: relative;
+}
+
+.testimonial-group {
+  background-color: white;
+  border: 2px black solid;
+  padding: 4px;
+  overflow-x: auto;
+  overflow-y:hidden;
+  margin-bottom: 15px;
+}
+
+.allCardGridHand {
+  display: inline-grid;
+  position: relative;
 }

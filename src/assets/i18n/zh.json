@@ -9,6 +9,8 @@
         "cardPackageName110": "普通卡盒",
         "cardPackageName210": "高级卡盒",
         "cardPackageName310": "稀有卡盒",
+        "youHandFull": "你的手牌已经满了",
+        "DataError": "数据错误",
         "cardClassName_2": "野兽",
         "cardValue": "价值",
         "cardClassName_2_Desc": "当场上有超过两个野兽的时候，每个野兽可以增加5%的攻击力",
@@ -26,6 +28,7 @@
         "nextCard": "下一张",
         "decompose": "分解",
         "putIntoHand": "放入手牌",
+        "cardInHand": "手牌",
         "theLastCard": "最后一张"
     }
 }

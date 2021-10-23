@@ -6,8 +6,8 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { baseCardMode } from 'src/app/share/models'
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { trigger, state, style, animate, transition} from '@angular/animations';
-
+import { trigger, state, style, animate, transition } from '@angular/animations';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-openCards',
@@ -15,13 +15,20 @@ import { trigger, state, style, animate, transition} from '@angular/animations';
   styleUrls: ['./openCards.component.scss'],
   animations: [
     trigger('animateDestroy', [
-      state('void', style({ opacity: '0' })),
-      transition('* => void', animate('300ms ease'))
+      // the "in" style determines the "resting" state of the element when it is visible.
+      state('in', style({ opacity: 1 })),
+
+      // fade in when created. this could also be written as transition('void => *')
+      transition(':enter', [style({ opacity: 0 }), animate(600)]),
+
+      // fade out when destroyed. this could also be written as transition('void => *')
+      transition(':leave', animate(400, style({ opacity: 0 }))),
     ])
   ]
 })
 export class OpenCardsComponent implements OnInit {
   public allCards: Array<baseCardMode> = [];
+  public allHandCards: Array<baseCardMode> = [];
   closeResult = '';
 
   constructor(
@@ -29,11 +36,13 @@ export class OpenCardsComponent implements OnInit {
     private modalService: NgbModal,
     private spinnerService: NgxSpinnerService,
     private translateService: TranslateService,
+    private toastr: ToastrService,
     public router: Router
   ) { }
 
   ngOnInit() {
     this.loadAllMyCards();
+    this.getAllHandCards();
   }
 
   loadAllMyCards() {
@@ -47,28 +56,51 @@ export class OpenCardsComponent implements OnInit {
       );
   }
 
-  cardWindow(cardIndex:number)
-  {
-    console.log(this.allCards[cardIndex]);
-    const modalRef = this.modalService.open(ModalCardWindowComponent, { size: 'lg', animation: true, centered: true, keyboard: false, });
-    modalRef.componentInstance.card = this.allCards[cardIndex];
+  getAllHandCards() {
+    this.apiService.getAllHandCards$()
+      .subscribe((next: baseCardMode[][]) => {
+        setTimeout(() => {
+          this.allHandCards = next[0];
+          //console.log(this.allCards[0]);
+        }, 0);
+      }
+      );
+  }
 
+  cardWindow(cardIndex: number, buttons:number) {
+    console.log(cardIndex);
+    const modalRef = this.modalService.open(ModalCardWindowComponent, { size: 'lg', animation: true, centered: true, keyboard: false, });
+    if(buttons === 1){
+      modalRef.componentInstance.card = this.allCards[cardIndex];
+    }else{
+      modalRef.componentInstance.card = this.allHandCards[cardIndex];
+    }
+    modalRef.componentInstance.buttons = buttons;
     modalRef.result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = this.getDismissReason(reason);
-      if(this.closeResult === 'nothing'){
+      if (this.closeResult === 'nothing') {
 
-      }else{
-        this.allCards.splice(cardIndex, 1);
-        // this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-        //   //this.router.navigate(['home/navbar/openPackage'], { skipLocationChange: true });
-        // });
+      } else {
+        console.log();
+        this.apiService.postPutCardToHand$(this.allCards[cardIndex].cardId)
+          .subscribe((next) => {
+            setTimeout(() => {
+              if(next.hasOwnProperty('error')){
+                this.toastr.error(this.translateService.instant("gameBase."+next.error));
+              }else{
+                this.allHandCards.push(this.allCards[cardIndex]);
+                this.allCards.splice(cardIndex, 1);                
+              }
+            }, 0);
+          }
+          );
       }
     });
   }
 
-  
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'nothing';
