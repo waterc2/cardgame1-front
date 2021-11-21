@@ -1,5 +1,5 @@
 export class GlobalConstants {
-    public static apiURL: string = "http://127.0.0.1/api/";      
+    public static apiURL: string = "http://127.0.0.1/api/";
     public static imageURL: string = "http://127.0.0.1/storage";
 }
 
@@ -13,22 +13,22 @@ export class basePackageMode {
     class: string;
 }
 
-export class cardSkill{
+export class cardSkill {
     icon: number;
     desc: string;
     energy: number;
     color: string;
     result: Array<number>;
-    li:boolean;
-    fi:boolean;
-    wa:boolean;
-    da:boolean;
-    ho:boolean;
-    na:boolean;
+    li: boolean;
+    fi: boolean;
+    wa: boolean;
+    da: boolean;
+    ho: boolean;
+    na: boolean;
 }
 
 export class baseCardMode {
-    cardId:number
+    cardId: number
     abrasion: number;
     cost: number;
     damage: number;
@@ -48,4 +48,22 @@ export class baseCardMode {
     speedColor: string;
     class: number;
     skills: Array<cardSkill> | undefined;
+}
+
+export class gameStage {
+    d_id: number
+    map_id: number
+    s_d_data: string
+    s_data: string
+    f_id: number
+    s_map_data: string
+    s_status: number
+    s_type: number
+}
+
+export class baseMap {
+    map_data: any[]
+    map_image: string
+    map_name: string
+    map_style: string
 }

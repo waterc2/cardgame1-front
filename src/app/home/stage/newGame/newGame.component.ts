@@ -31,8 +31,8 @@ export class NewGameComponent implements OnInit  {
       .subscribe((next) => {
         setTimeout(() => {
           if(next.stage.s_type === 10){
-            console.log('change');
             this.router.navigate([this.router.url]);
+            this.router.navigate(["home/stage/baseMap"], { skipLocationChange: true });
           }
         }, 0);
       }

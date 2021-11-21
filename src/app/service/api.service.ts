@@ -65,4 +65,10 @@ export class ApiService {
     return this.httpClient.post<any>(`${this.baseUrl}/api/putCardToHand`, reqData);    
   }
 
+  getMapData$()
+  {
+    return this.httpClient.get<any>(`${this.baseUrl}/api/getMapData`);
+  }
+
+
 }
