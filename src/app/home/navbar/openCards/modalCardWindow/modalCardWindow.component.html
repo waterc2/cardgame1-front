@@ -1,12 +1,22 @@
-<app-cardDisplay [card]=card [cardSize]=100></app-cardDisplay>
+<app-cardDisplay [card]="card" [cardSize]="100"></app-cardDisplay>
 
 <div class="modal-footer">
   <button type="button" class="btn btn-outline-dark btn-sm" disabled>
-    {{'common.decompose' |translate}}
+    {{ "common.decompose" | translate }}
   </button>
-  <button *ngIf="buttons" type="button" class="btn btn-primary btn-sm" (click)="putIntoHand()">
-    {{'common.putIntoHand' |translate}}
+  <button
+    *ngIf="buttons"
+    type="button"
+    class="btn btn-primary btn-sm"
+    (click)="putIntoHand()"
+  >
+    {{ "common.putIntoHand" | translate }}
   </button>
-  <button type="button" class="btn btn-outline-dark me-md-2 btn-sm"
-    (click)="activeModal.close('Close click')">{{'common.close' | translate}}</button>
+  <button
+    type="button"
+    class="btn btn-outline-dark me-md-2 btn-sm"
+    (click)="activeModal.close('Close click')"
+  >
+    {{ "common.close" | translate }}
+  </button>
 </div>

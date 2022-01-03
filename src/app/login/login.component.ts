@@ -6,32 +6,29 @@ import { Router, CanActivate, NavigationEnd } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
   signinForm: FormGroup;
-  
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     public router: Router
   ) {
-    router.events
-          .subscribe(
-            (event: any) => {
-              if(event instanceof NavigationEnd) {
-                if(event.url === '/logout'){
-                  this.logout();
-                }
-              }
-            });
+    router.events.subscribe((event: any) => {
+      if (event instanceof NavigationEnd) {
+        if (event.url === '/logout') {
+          this.logout();
+        }
+      }
+    });
   }
 
   ngOnInit() {
     this.signinForm = this.fb.group({
       email: [null, [Validators.required, Validators.email]],
-      password: [null, Validators.required]
+      password: [null, Validators.required],
     });
   }
   get form() {
@@ -39,7 +36,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.authService.loginUser(this.form.email.value, this.form.password.value)
+    this.authService
+      .loginUser(this.form.email.value, this.form.password.value)
       .subscribe(
         (data: any) => {
           console.log(data);
@@ -48,8 +46,9 @@ export class LoginComponent implements OnInit {
           }
         },
         (error: any) => {
-          console.log(111,error);
-        });
+          console.log(111, error);
+        }
+      );
   }
 
   logout() {

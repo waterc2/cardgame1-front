@@ -1,24 +1,36 @@
 <div class="login-main">
-    <main class="form-signin">
-        <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
-          <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-      
-          <div class="form-floating">
-            <input type="email" formControlName="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
-          </div>
-          <div class="form-floating">
-            <input type="password" formControlName="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
-          </div>
-      
-          <div class="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="remember-me"> Remember me
-            </label>
-          </div>
-          <a routerLink='/signup' class="w-50 btn link-secondary">Join Us</a>
-          <button class="w-50 btn btn-lg btn-primary" type="submit">Sign in</button>
-        </form>
-      </main>
-    </div>
+  <main class="form-signin">
+    <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+      <div class="form-floating">
+        <input
+          type="email"
+          formControlName="email"
+          class="form-control"
+          id="floatingInput"
+          placeholder="name@example.com"
+        />
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input
+          type="password"
+          formControlName="password"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Password"
+        />
+        <label for="floatingPassword">Password</label>
+      </div>
+
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me" /> Remember me
+        </label>
+      </div>
+      <a routerLink="/signup" class="w-50 btn link-secondary">Join Us</a>
+      <button class="w-50 btn btn-lg btn-primary" type="submit">Sign in</button>
+    </form>
+  </main>
+</div>

@@ -1,180 +1,180 @@
-.badge{
-    padding: 0.1em 0.2em;
+.badge {
+  padding: 0.1em 0.2em;
 }
-.badge img{
-    position: relative;
-    top: -2px;
+.badge img {
+  position: relative;
+  top: -2px;
 }
-.cardTitle{
-    top: 16%;
-    text-align: center;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    position: absolute;
+.cardTitle {
+  top: 16%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  position: absolute;
 }
-.cardFrame{
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 45%;
-    position: absolute;
+.cardFrame {
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 45%;
+  position: absolute;
 }
-.cardImage{
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    width: 225px;
+.cardImage {
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  width: 225px;
 }
-.cardHealth{
-    top: 73%;
-    left: 3%;
-    background-color: lightcoral;
-    text-align: center;
-    position: relative;
-    --bs-bg-opacity: 1;
-    display: inline-block;
-    font-size: 1.3em;
-    width: 120px;
+.cardHealth {
+  top: 73%;
+  left: 3%;
+  background-color: lightcoral;
+  text-align: center;
+  position: relative;
+  --bs-bg-opacity: 1;
+  display: inline-block;
+  font-size: 1.3em;
+  width: 120px;
 }
-.cardMelee{
-    top: 35%;
-    left: -73%;
-    background-color: brown;
-    text-align: center;    
-    position: relative;
-    --bs-bg-opacity: 1;
-    display: inline-block;
-    font-size: 1.2em;
-    width: 70px;
+.cardMelee {
+  top: 35%;
+  left: -73%;
+  background-color: brown;
+  text-align: center;
+  position: relative;
+  --bs-bg-opacity: 1;
+  display: inline-block;
+  font-size: 1.2em;
+  width: 70px;
 }
-.cardRange{
-    top: 42%;
-    left:4%;
-    text-align: center;
-    position: relative;
-    --bs-bg-opacity: 1;
-    display: inline-block;
-    width: 70px;
-    min-height: 22px;
+.cardRange {
+  top: 42%;
+  left: 4%;
+  text-align: center;
+  position: relative;
+  --bs-bg-opacity: 1;
+  display: inline-block;
+  width: 70px;
+  min-height: 22px;
 }
-.cardRange span{    
-    background-color:rgb(139, 34, 139);
-    width: 70px;
-    font-size: 1.2em;
+.cardRange span {
+  background-color: rgb(139, 34, 139);
+  width: 70px;
+  font-size: 1.2em;
 }
-.cardDefense{
-    top: 58%;
-    left: -6%;
-    background-color: rgb(107, 92, 27);
-    text-align: center;
-    transform: translate(-50%, -50%);
-    position: relative;
-    display: inline-block;
-    --bs-bg-opacity: 1;
-    font-size: 1.2em;
-    width: 70px;
+.cardDefense {
+  top: 58%;
+  left: -6%;
+  background-color: rgb(107, 92, 27);
+  text-align: center;
+  transform: translate(-50%, -50%);
+  position: relative;
+  display: inline-block;
+  --bs-bg-opacity: 1;
+  font-size: 1.2em;
+  width: 70px;
 }
-.cardSpeed{
-    top: 70%;
-    left: -26%;
-    background-color: rgb(53, 87, 22);
-    text-align: center;
-    transform: translate(-50%, -50%);
-    position: relative;
-    display: inline-block;
-    --bs-bg-opacity: 1;
-    font-size: 1.2em;
-    width: 70px;
+.cardSpeed {
+  top: 70%;
+  left: -26%;
+  background-color: rgb(53, 87, 22);
+  text-align: center;
+  transform: translate(-50%, -50%);
+  position: relative;
+  display: inline-block;
+  --bs-bg-opacity: 1;
+  font-size: 1.2em;
+  width: 70px;
 }
-.cardAbrasion{
-    top: 15%;
-    left: 80%;
-    text-align: center;
-    transform: translate(-50%, -50%);
-    position: relative;
-    --bs-bg-opacity: 1;
-    display: inline-block;
-    width: 70px;
-    min-height: 22px;
+.cardAbrasion {
+  top: 15%;
+  left: 80%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  position: relative;
+  --bs-bg-opacity: 1;
+  display: inline-block;
+  width: 70px;
+  min-height: 22px;
 }
-.cardAbrasion span{    
-    background-color: rgb(0, 0, 0);
-    font-size: 1.4em;
+.cardAbrasion span {
+  background-color: rgb(0, 0, 0);
+  font-size: 1.4em;
 }
-.cardDamage{
-    top: 24%;
-    left: -13%;
-    text-align: left;
-    transform: translate(-50%, -50%);
-    position: relative;
-    color: rgb(26, 146, 56);
-    display: inline-block;
-    width: 100px;
+.cardDamage {
+  top: 24%;
+  left: -13%;
+  text-align: left;
+  transform: translate(-50%, -50%);
+  position: relative;
+  color: rgb(26, 146, 56);
+  display: inline-block;
+  width: 100px;
 }
-.cardCost{
-    top: 25%;
-    left: 45%;
-    text-align: right;
-    transform: translate(-50%, -50%);
-    position: relative;
-    color: rgb(26, 146, 56);
-    display: inline-block;
-    width: 100px;
+.cardCost {
+  top: 25%;
+  left: 45%;
+  text-align: right;
+  transform: translate(-50%, -50%);
+  position: relative;
+  color: rgb(26, 146, 56);
+  display: inline-block;
+  width: 100px;
 }
-.cardEnergy{
-    top: 83%;
-    text-align: center;
-    transform: translate(-50%, -50%);
-    left: 15%;
-    position: relative;
-    display: inline-block;
-    --bs-bg-opacity: 1;
-    min-height: 22px;
-    width: 120px;
+.cardEnergy {
+  top: 83%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  left: 15%;
+  position: relative;
+  display: inline-block;
+  --bs-bg-opacity: 1;
+  min-height: 22px;
+  width: 120px;
 }
-.cardEnergy span{
-    background-color: rgb(22, 24, 189);
-    font-size: 1.3em;
-    min-width: 80px;
+.cardEnergy span {
+  background-color: rgb(22, 24, 189);
+  font-size: 1.3em;
+  min-width: 80px;
 }
-.cardExhaust{
-    font-size: 0.5em;
+.cardExhaust {
+  font-size: 0.5em;
 }
-.cardSkill{
-    top: -42%;
-    left: 75%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    position: relative;
-    --bs-bg-opacity: 1;
-    display: inline-block;
-    width: 35px;
-    height: 215px;
+.cardSkill {
+  top: -42%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  position: relative;
+  --bs-bg-opacity: 1;
+  display: inline-block;
+  width: 35px;
+  height: 215px;
 }
-.cardSkillCell{    
-    font-size: 1.5em;
-    display: inline-block;
-    height: 215px;
+.cardSkillCell {
+  font-size: 1.5em;
+  display: inline-block;
+  height: 215px;
 }
-.valueFont1{
-    font-weight: lighter;
+.valueFont1 {
+  font-weight: lighter;
 }
-.valueFont2{
-    font-weight: normal;
+.valueFont2 {
+  font-weight: normal;
 }
-.valueFont3{
-    font-weight:900;
+.valueFont3 {
+  font-weight: 900;
 }
-.valueFont4{
-    font-weight:900;
-    font-size: 1.3em;
+.valueFont4 {
+  font-weight: 900;
+  font-size: 1.3em;
 }
-.cardSkillIcon{
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
-    min-width: 32px;
-    display: inline-block;
+.cardSkillIcon {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  min-width: 32px;
+  display: inline-block;
 }
-.popover{
-    max-width:200px;
+.popover {
+  max-width: 200px;
 }

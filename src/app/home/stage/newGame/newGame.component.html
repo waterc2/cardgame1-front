@@ -1,7 +1,20 @@
-<span class="type" style="--n:400">这是一个充满各种怪兽的世界。想要生存下去，你需要获得封印怪兽的卡牌，使用魔力水晶的能量让他们帮你战斗。
-    需要注意的是，白色的卡牌一旦召唤出怪兽，卡牌就会消失。彩色卡牌有更强的能量，召唤怪兽，在战斗中损失生命，重伤以及昏迷都会降低卡牌能量，
-    降为0后卡牌也会消失。作为新人，你会获得4个卡牌包<fa-icon [icon]="faPackage"></fa-icon>，将卡牌放入你的牌组<fa-icon [icon]="faCard"></fa-icon>中，注意，牌组中的卡牌无法被取出。开始的冒险吧，尽量不要死的太早！</span>
+<span class="type" style="--n: 400"
+  >这是一个充满各种怪兽的世界。想要生存下去，你需要获得封印怪兽的卡牌，使用魔力水晶的能量让他们帮你战斗。
+  需要注意的是，白色的卡牌一旦召唤出怪兽，卡牌就会消失。彩色卡牌有更强的能量，召唤怪兽，在战斗中损失生命，重伤以及昏迷都会降低卡牌能量，
+  降为0后卡牌也会消失。作为新人，你会获得4个卡牌包<fa-icon
+    [icon]="faPackage"
+  ></fa-icon
+  >，将卡牌放入你的牌组<fa-icon [icon]="faCard"></fa-icon
+  >中，注意，牌组中的卡牌无法被取出。开始的冒险吧，尽量不要死的太早！</span
+>
 
-    <div class="text-center">
-        <button type="button" class="btn btn-primary" (click)="start()"  [disabled]="!enableButton">Let's get started</button>
-      </div>
+<div class="text-center">
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="start()"
+    [disabled]="!enableButton"
+  >
+    Let's get started
+  </button>
+</div>

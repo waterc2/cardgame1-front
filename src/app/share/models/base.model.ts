@@ -1,69 +1,69 @@
 export class GlobalConstants {
-    public static apiURL: string = "http://127.0.0.1/api/";
-    public static imageURL: string = "http://127.0.0.1/storage";
+  public static apiURL: string = 'http://127.0.0.1/api/';
+  public static imageURL: string = 'http://127.0.0.1/storage';
 }
 
 export class basePackageMode {
-    id: number;
-    name: string;
-    level: number;
-    image: string;
-    rare: number;
-    value: number;
-    class: string;
+  id: number;
+  name: string;
+  level: number;
+  image: string;
+  rare: number;
+  value: number;
+  class: string;
 }
 
 export class cardSkill {
-    icon: number;
-    desc: string;
-    energy: number;
-    color: string;
-    result: Array<number>;
-    li: boolean;
-    fi: boolean;
-    wa: boolean;
-    da: boolean;
-    ho: boolean;
-    na: boolean;
+  icon: number;
+  desc: string;
+  energy: number;
+  color: string;
+  result: Array<number>;
+  li: boolean;
+  fi: boolean;
+  wa: boolean;
+  da: boolean;
+  ho: boolean;
+  na: boolean;
 }
 
 export class baseCardMode {
-    cardId: number
-    abrasion: number;
-    cost: number;
-    damage: number;
-    defense: number;
-    defenseColor: string;
-    energy: number;
-    exhaust: number;
-    health: number;
-    image: string;
-    melee: number;
-    meleeColor: string;
-    name: string;
-    range: number;
-    rangeColor: string;
-    rarity: number;
-    speed: number;
-    speedColor: string;
-    class: number;
-    skills: Array<cardSkill> | undefined;
+  cardId: number;
+  abrasion: number;
+  cost: number;
+  damage: number;
+  defense: number;
+  defenseColor: string;
+  energy: number;
+  exhaust: number;
+  health: number;
+  image: string;
+  melee: number;
+  meleeColor: string;
+  name: string;
+  range: number;
+  rangeColor: string;
+  rarity: number;
+  speed: number;
+  speedColor: string;
+  class: number;
+  skills: Array<cardSkill> | undefined;
 }
 
 export class gameStage {
-    d_id: number
-    map_id: number
-    s_d_data: string
-    s_data: string
-    f_id: number
-    s_map_data: string
-    s_status: number
-    s_type: number
+  d_id: number;
+  map_id: number;
+  s_d_data: string;
+  s_data: string;
+  f_id: number;
+  s_map_data: string;
+  s_status: number;
+  s_type: number;
 }
 
 export class baseMap {
-    map_data: any[]
-    map_image: string
-    map_name: string
-    map_style: string
+  map_data: any[];
+  map_image: string;
+  map_name: string;
+  map_style: string;
 }

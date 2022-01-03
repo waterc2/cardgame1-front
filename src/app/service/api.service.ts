@@ -4,10 +4,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
-  public baseUrl = "http://127.0.0.1";
+  public baseUrl = 'http://127.0.0.1';
   private u_id: number | undefined;
 
   constructor(private httpClient: HttpClient) {
@@ -16,59 +16,58 @@ export class ApiService {
       this.u_id = JSON.parse(returnUrl).user.u_id;
     }
   }
-  
-  getStage$()
-  {
+
+  getStage$() {
     return this.httpClient.get<any>(`${this.baseUrl}/api/getStage`);
   }
 
   //
-  changeGameStage$()
-  {
-    return this.httpClient.post<any>(`${this.baseUrl}/api/changeStage`, 'stage=startGame');
-  }
-  
-  getAvailablePackageNumber$()
-  {
-    return this.httpClient.get<any>(`${this.baseUrl}/api/availablePackageNumber`);
+  changeGameStage$() {
+    return this.httpClient.post<any>(
+      `${this.baseUrl}/api/changeStage`,
+      'stage=startGame'
+    );
   }
 
-  getAvailablePackage$()
-  {
+  getAvailablePackageNumber$() {
+    return this.httpClient.get<any>(
+      `${this.baseUrl}/api/availablePackageNumber`
+    );
+  }
+
+  getAvailablePackage$() {
     return this.httpClient.get<any>(`${this.baseUrl}/api/availablePackage`);
   }
 
-  getStartANewGame$()
-  {
+  getStartANewGame$() {
     return this.httpClient.get<any>(`${this.baseUrl}/api/resetGame`);
   }
 
-  getAllMyCards$()
-  {
+  getAllMyCards$() {
     return this.httpClient.get<any>(`${this.baseUrl}/api/getAllMyCards`);
   }
 
-  getAllHandCards$()
-  {
+  getAllHandCards$() {
     return this.httpClient.get<any>(`${this.baseUrl}/api/getAllHandCards`);
   }
 
-  postOpenPackage$(p_id:number)
-  {
-    let reqData = { "p_id": p_id};
-    return this.httpClient.post<any>(`${this.baseUrl}/api/openPackage`, reqData);    
+  postOpenPackage$(p_id: number) {
+    let reqData = { p_id: p_id };
+    return this.httpClient.post<any>(
+      `${this.baseUrl}/api/openPackage`,
+      reqData
+    );
   }
 
-  postPutCardToHand$(c_id:number)
-  {
-    let reqData = { "c_id": c_id};
-    return this.httpClient.post<any>(`${this.baseUrl}/api/putCardToHand`, reqData);    
+  postPutCardToHand$(c_id: number) {
+    let reqData = { c_id: c_id };
+    return this.httpClient.post<any>(
+      `${this.baseUrl}/api/putCardToHand`,
+      reqData
+    );
   }
 
-  getMapData$()
-  {
+  getMapData$() {
     return this.httpClient.get<any>(`${this.baseUrl}/api/getMapData`);
   }
-
-
 }
