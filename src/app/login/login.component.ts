@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../service/auth.service';
 import { Router, CanActivate, NavigationEnd } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    public router: Router
+    public router: Router,
+    private toastr: ToastrService,
   ) {
     router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
@@ -46,7 +48,7 @@ export class LoginComponent implements OnInit {
           }
         },
         (error: any) => {
-          console.log(111, error);
+          this.toastr.error(error.error.error);
         }
       );
   }

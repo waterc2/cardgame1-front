@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -14,7 +15,8 @@ export class SignupComponent implements OnInit {
   constructor(
     private formbuilder: FormBuilder,
     private http: HttpClient,
-    public router: Router
+    public router: Router,
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -29,6 +31,10 @@ export class SignupComponent implements OnInit {
       .post('http://127.0.0.1/api/auth/register', this.form.getRawValue())
       .subscribe((res) => {
         this.router.navigate(['login']);
+      },
+      (error: any) => {
+      console.log(error);
+        this.toastr.error(error.error);
       });
   }
 }
