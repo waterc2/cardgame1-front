@@ -12,6 +12,7 @@ import {
   faSkullCrossbones,
   faSun,
   faHeartBroken,
+  faCrosshairs,
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -33,29 +34,32 @@ export class CardDisplayComponent implements OnInit {
   faSkullCrossbones = faSkullCrossbones;
   faSun = faSun;
   faHeartBroken = faHeartBroken;
+  faCrosshairs = faCrosshairs;
+
   specialHeight: number;
+  bigCard: number = 1;
   frameImage: string[];
   titleColor: string;
   className: string;
   skillsArray: Array<any>;
   defenseColor: string;
-  meleeColor: string;
-  rangeColor: string;
+  attackColor: string;
   speedColor: string;
-  iconMelee: string = GlobalConstants.imageURL + '/icons/melee.svg';
-  iconRange: string = GlobalConstants.imageURL + '/icons/range.svg';
+  spiritColor: string;
+  iconAttack: string = GlobalConstants.imageURL + '/icons/melee.svg';
   iconSpeed: string = GlobalConstants.imageURL + '/icons/speed.svg';
   iconMagic: string = GlobalConstants.imageURL + '/icons/magic.svg';
   iconDefense: string = GlobalConstants.imageURL + '/icons/defense.svg';
   iconHealth: string = GlobalConstants.imageURL + '/icons/health.svg';
+  iconSpirit: string = GlobalConstants.imageURL + '/icons/spirit.svg';
 
   constructor() {}
 
   ngOnInit() {
-    if (this.cardSize === 100) {
-      this.specialHeight = 400;
+    if (this.cardSize === 50) {
+      this.bigCard = 0;
     } else {
-      this.specialHeight = 450;
+      this.specialHeight = 400;
     }
     this.frameImage = [
       GlobalConstants.imageURL + '/assets/frame1_0.png',
@@ -72,9 +76,9 @@ export class CardDisplayComponent implements OnInit {
     }
     this.className = 'gameBase.cardClassName_' + this.card.class;
     this.defenseColor = 'valueFont' + this.card.defenseColor;
-    this.meleeColor = 'valueFont' + this.card.meleeColor;
-    this.rangeColor = 'valueFont' + this.card.rangeColor;
+    this.attackColor = 'valueFont' + this.card.attackColor;
     this.speedColor = 'valueFont' + this.card.speedColor;
+    this.spiritColor = 'valueFont' + this.card.spiritColor;
   }
 
   getIcon(index: number) {
@@ -99,8 +103,10 @@ export class CardDisplayComponent implements OnInit {
         return this.faHourglass;
       case 42:
         return this.faAtom;
-      case 43:
-        return this.faHourglassEnd;
+        case 43:
+      return this.faHourglassEnd;
+        case 100:
+      return this.faCrosshairs;
     }
     return this.faDotCircle;
   }

@@ -55,7 +55,7 @@ export class OpenCardsComponent implements OnInit {
     this.apiService.getAllMyCards$().subscribe((next: baseCardMode[][]) => {
       setTimeout(() => {
         this.allCards = next[0];
-        //console.log(this.allCards[0]);
+        //console.log(next[0]);
       }, 0);
     });
   }
@@ -64,7 +64,7 @@ export class OpenCardsComponent implements OnInit {
     this.apiService.getAllHandCards$().subscribe((next: baseCardMode[][]) => {
       setTimeout(() => {
         this.allHandCards = next[0];
-        //console.log(this.allCards[0]);
+        //console.log(next[0]);
       }, 0);
     });
   }
@@ -91,7 +91,6 @@ export class OpenCardsComponent implements OnInit {
         this.closeResult = this.getDismissReason(reason);
         if (this.closeResult === 'nothing') {
         } else {
-          console.log();
           this.apiService
             .postPutCardToHand$(this.allCards[cardIndex].cardId)
             .subscribe((next) => {

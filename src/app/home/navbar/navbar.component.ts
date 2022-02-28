@@ -19,6 +19,8 @@ export class NavbarComponent implements OnInit {
   faCard = faLayerGroup;
   faAccount = faUser;
   public availablePackage: number;
+  public onhandCard: number;
+  public availableCard: number;
 
   constructor(private apiService: ApiService, public router: Router) {}
 
@@ -55,9 +57,11 @@ export class NavbarComponent implements OnInit {
       this.newStartFunction();
     }
 
-    this.apiService.getAvailablePackageNumber$().subscribe((next) => {
+    this.apiService.getNavbarNumbers$().subscribe((next) => {
       setTimeout(() => {
-        this.availablePackage = next;
+        this.availablePackage = next[0];
+        this.onhandCard = next[1];
+        this.availableCard = next[2];
       }, 0);
     });
   }

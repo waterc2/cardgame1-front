@@ -29,23 +29,21 @@ export class cardSkill {
 
 export class baseCardMode {
   cardId: number;
-  abrasion: number;
-  cost: number;
-  damage: number;
-  defense: number;
-  defenseColor: string;
-  energy: number;
-  exhaust: number;
+  cost: number;  
+  abrasion: number;  
   health: number;
-  image: string;
-  melee: number;
-  meleeColor: string;
-  name: string;
-  range: number;
-  rangeColor: string;
-  rarity: number;
+  attack: number;
+  attackColor: string;
   speed: number;
   speedColor: string;
+  defense: number;
+  defenseColor: string;
+  spirit: number;
+  spiritColor: string;
+  energy: number;
+  image: string;
+  name: string;
+  rarity: number;
   class: number;
   skills: Array<cardSkill> | undefined;
 }

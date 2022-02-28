@@ -13,7 +13,7 @@
     "DataError": "数据错误",
     "cardClassName_2": "野兽",
     "cardValue": "价值",
-    "cardClassName_2_Desc": "当场上有超过两个野兽的时候，每个野兽可以增加5%的攻击力",
+    "cardClassName_2_Desc": "当场上有超过两个野兽的时候，每个野兽可以增加等于野兽数量的攻击力",
     "cardAbrasionTitle": "卡牌能量",
     "cardAbrasionDesc": "卡牌进入战场，损失生命，重伤，昏迷以及使用特别技能都会降低能量。当能量降为零，卡牌会消失。",
     "cardCostTitle": "消耗能量水晶",

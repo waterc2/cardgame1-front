@@ -29,9 +29,9 @@ export class ApiService {
     );
   }
 
-  getAvailablePackageNumber$() {
+  getNavbarNumbers$() {
     return this.httpClient.get<any>(
-      `${this.baseUrl}/api/availablePackageNumber`
+      `${this.baseUrl}/api/getNavbarNumbers`
     );
   }
 

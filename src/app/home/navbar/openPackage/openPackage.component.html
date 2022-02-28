@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <ng-container *ngIf="availablePackages.length > 0; else elseBlock">
+  <ng-container *ngIf="availablePackages.length > 0">
     <div class="row row-cols-4">
       <div *ngFor="let item of availablePackages; index as i" class="col">
         <img
@@ -12,7 +12,9 @@
       </div>
     </div>
   </ng-container>
-  <ng-template #elseBlock>
-    <h1 class="d-flex justify-content-center">No package!</h1>
-  </ng-template>
+
+  <ng-container *ngIf="returnResult == 1 && availablePackages.length == 0">
+    <h1  class="d-flex justify-content-center">No package!</h1>
+  </ng-container>
+
 </div>

@@ -28,7 +28,6 @@ import { OpenCardsComponent } from './home/navbar/openCards/openCards.component'
 import { OpenMapComponent } from './home/navbar/openMap/openMap.component';
 import { ModalOpenPackageComponent } from './home/navbar/openPackage/modalOpenPackage/modalOpenPackage.component';
 import { CardDisplayComponent } from './home/game/cardDisplay/cardDisplay.component';
-import { CardDisplaySmallComponent } from './home/game/cardDisplay/cardDisplaySmall/cardDisplaySmall.component';
 import { ModalCardWindowComponent } from './home/navbar/openCards/modalCardWindow/modalCardWindow.component';
 
 @NgModule({
@@ -44,7 +43,6 @@ import { ModalCardWindowComponent } from './home/navbar/openCards/modalCardWindo
     OpenCardsComponent,
     ModalOpenPackageComponent,
     CardDisplayComponent,
-    CardDisplaySmallComponent,
     NewGameComponent,
     ModalCardWindowComponent,
   ],

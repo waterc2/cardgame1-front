@@ -13,6 +13,7 @@ import { ModalOpenPackageComponent } from './modalOpenPackage/modalOpenPackage.c
 })
 export class OpenPackageComponent implements OnInit {
   public availablePackages: Array<any> = [];
+  public returnResult = 0;
   closeResult = '';
   constructor(
     private apiService: ApiService,
@@ -29,6 +30,7 @@ export class OpenPackageComponent implements OnInit {
   loadAllPackage() {
     this.apiService.getAvailablePackage$().subscribe((next) => {
       setTimeout(() => {
+        this.returnResult = 1;
         next[0].forEach((element: any) => {
           let newData: basePackageMode = {
             image: `http://127.0.0.1/storage/assets/game_bag${element.p_rare}.png`,

@@ -1,7 +1,6 @@
-<div
-  class="mx-auto d-block"
-  style="height: {{ specialHeight }}px;width: 350px;zoom:{{ cardSize }}%"
->
+<ng-template [ngIf]="bigCard" [ngIfElse]="smallCard">
+<div class="mx-auto d-block"
+  style="height: {{ specialHeight }}px;width: 350px;zoom:{{ cardSize }}%">
   <div class="d-block" style="height: {{ specialHeight }}px;width: 350px;">
     <div class="d-block" style="height: 400px; width: 350px">
       <img src="{{ card.image }}" class="cardImage" />
@@ -38,34 +37,22 @@
           [icon]="faGem"
         ></fa-icon>
       </span>
-      <span
-        class="cardDamage"
-        role="button"
-        placement="top"
-        popoverTitle="{{ 'gameBase.cardDamageTitle' | translate }}"
-        ngbPopover="{{ 'gameBase.cardDamageDesc' | translate }}"
-      >
-        <fa-icon
-          *ngFor="let i of [].constructor(card.damage)"
-          [icon]="faDotCircle"
-        ></fa-icon>
-      </span>
 
-      <span class="badge cardMelee {{ meleeColor }}" role="button">
-        <img src="{{ iconMelee }}" style="height: 18px" /> {{ card.melee }}
+      <span class="badge cardAttack {{ attackColor }}" role="button">
+        <img src="{{ iconAttack }}" style="height: 18px" /> {{ card.attack }}
       </span>
-      <div class="cardRange">
-        <span role="button" class="badge {{ rangeColor }}" *ngIf="card.range"
-          ><img src="{{ iconRange }}" style="height: 18px" />
-          {{ card.range }}</span
-        >
-      </div>
       <span class="badge cardDefense {{ defenseColor }}" role="button">
         <img src="{{ iconDefense }}" style="height: 18px" /> {{ card.defense }}
       </span>
       <span class="badge cardSpeed {{ speedColor }}" role="button">
         <img src="{{ iconSpeed }}" style="height: 18px" /> {{ card.speed }}
       </span>
+      <div class="cardSpirit">
+        <span role="button" class="badge {{ spiritColor }}" *ngIf="card.spirit"
+          ><img src="{{ iconSpirit }}" style="height: 18px" />
+          {{ card.spirit }}</span
+        >
+      </div>
       <div class="cardEnergy">
         <span *ngIf="card.energy" class="badge rounded-pill" role="button">
           <img src="{{ iconMagic }}" style="height: 20px" /> {{ card.energy }}
@@ -73,7 +60,6 @@
       </div>
       <span class="badge rounded-pill cardHealth" role="button">
         <img src="{{ iconHealth }}" style="height: 20px" /> {{ card.health }}
-        <span class="cardExhaust">{{ card.exhaust }}</span>
       </span>
     </div>
     <div class="cardSkill">
@@ -95,3 +81,70 @@
     </div>
   </div>
 </div>
+</ng-template>
+
+
+
+
+
+<ng-template #smallCard>
+  <div class="mx-auto d-block cardBaseSizeSmall_s cardScreenSize_s">
+    <div class="d-block cardBaseSizeSmall_s">
+      <div class="d-block cardBaseSizeSmall_s">
+        <img src="{{ card.image }}" class="cardImage_s" />
+        <img src="{{ frameImage[card.rarity] }}" class="cardFrame_s" />
+        <p class="cardTitle_s" [ngStyle]="{ color: titleColor }">
+          {{ card.name }} [{{ className | translate }}]
+        </p>
+        <div class="cardPosition_s cardAbrasion_s">
+          <span class="badge badge_s rounded-pill" *ngIf="card.abrasion">{{
+            card.abrasion
+          }}</span>
+        </div>
+        <span class="cardPosition_s cardCost_s">
+          <fa-icon
+            *ngFor="let i of [].constructor(card.cost)"
+            [icon]="faGem"
+          ></fa-icon>
+        </span>
+        <span class="cardPosition_s cardAttack_s {{ attackColor }} badge badge_s">
+          <img src="{{ iconAttack }}" style="height: 16px" /> 
+          {{ card.attack }}
+        </span>
+        <span class="cardPosition_s {{ defenseColor }} badge badge_s cardDefense_s">
+          <img src="{{ iconDefense }}" style="height: 16px" /> 
+          {{ card.defense }}
+        </span>
+        <span class="cardPosition_s {{ speedColor }} badge badge_s cardSpeed_s">
+          <img src="{{ iconSpeed }}" style="height: 16px" />
+          {{ card.speed }}
+        </span>
+        
+      <div class="cardPosition_s cardSpirit_s">
+        <span class="badge badge_s {{ spiritColor }}" *ngIf="card.spirit"> 
+          <img src="{{ iconSpirit }}" style="height: 16px" />
+          {{ card.spirit }}
+        </span>
+      </div>
+        <div class="cardPosition_s cardEnergy_s">
+          <span *ngIf="card.energy" class="badge badge_s rounded-pill">
+            {{ card.energy }}
+          </span>
+        </div>
+        <span class="cardPosition_s badge badge_s rounded-pill cardHealth_s">
+          {{ card.health }}
+        </span>
+      </div>
+      <div class="cardPosition_s cardSkill_s">
+        <span class="cardSkillCell_s">
+          <span *ngFor="let skill of card.skills" class="cardSkillIcon_s">
+            <fa-icon
+              [icon]="getIcon(skill.icon)"
+              style="color: {{ skill.color }}"
+            ></fa-icon>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>  
+</ng-template>
