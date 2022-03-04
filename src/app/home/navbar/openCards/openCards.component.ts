@@ -44,7 +44,7 @@ export class OpenCardsComponent implements OnInit {
     private translateService: TranslateService,
     private toastr: ToastrService,
     public router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.loadAllMyCards();
@@ -70,7 +70,7 @@ export class OpenCardsComponent implements OnInit {
   }
 
   cardWindow(cardIndex: number, buttons: number) {
-    console.log(cardIndex);
+    //console.log(cardIndex);
     const modalRef = this.modalService.open(ModalCardWindowComponent, {
       size: 'lg',
       animation: true,

@@ -11,6 +11,7 @@ import {
 } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
+
 export class AuthService implements CanActivate {
   public baseUrl = 'http://127.0.0.1';
   private loggedUserSubject: BehaviorSubject<any>;

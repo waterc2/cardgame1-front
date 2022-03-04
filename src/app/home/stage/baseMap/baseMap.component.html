@@ -1,1 +1,16 @@
 <app-navbar></app-navbar>
+
+    <div *ngIf="currentMap"
+  class="h-75 d-inline-block w-100 bg-image"
+  style="
+    background-image: url('{{currentMap.map_image}}');
+  "
+>
+<div *ngFor="let map_date of currentMap.map_data; let i = index" style="{{map_date['location_style']}}">
+    <img src="{{map_date['e_image']}}" 
+    (click)="mapEvent(i)"
+    role="button">
+</div>
+
+
+</div>

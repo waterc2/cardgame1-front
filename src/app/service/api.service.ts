@@ -51,6 +51,10 @@ export class ApiService {
     return this.httpClient.get<any>(`${this.baseUrl}/api/getAllHandCards`);
   }
 
+  getMapData$() {
+    return this.httpClient.get<any>(`${this.baseUrl}/api/getMapData`);
+  }
+
   postOpenPackage$(p_id: number) {
     let reqData = { p_id: p_id };
     return this.httpClient.post<any>(
@@ -58,6 +62,14 @@ export class ApiService {
       reqData
     );
   }
+  
+  postTriggerMapEvent$(eventIndex: number) {
+    return this.httpClient.post<any>(
+      `${this.baseUrl}/api/postTriggerMapEvent`,
+      {eventIndex:eventIndex}
+    );
+  }
+
 
   postPutCardToHand$(c_id: number) {
     let reqData = { c_id: c_id };
@@ -67,7 +79,4 @@ export class ApiService {
     );
   }
 
-  getMapData$() {
-    return this.httpClient.get<any>(`${this.baseUrl}/api/getMapData`);
-  }
 }

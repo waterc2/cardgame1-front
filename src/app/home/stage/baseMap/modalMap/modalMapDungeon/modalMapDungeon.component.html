@@ -1,0 +1,11 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">{{ "common.startDungeonTitle" | translate }}</h4>
+  <button type="button" class="btn-close" aria-describedby="modal-title" (click)="modal.dismiss('Cross')"></button>
+</div>
+<div class="modal-body">
+  <p>{{mapEvent.e_data.message}}</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('Cancel')">{{ "common.thinkItAgain" | translate }}</button>
+  <button type="button" class="btn btn-danger" (click)="modal.close('Ok')">{{ "common.startDungeon" | translate }}</button>
+</div>

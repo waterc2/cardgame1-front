@@ -29,6 +29,7 @@ import { OpenMapComponent } from './home/navbar/openMap/openMap.component';
 import { ModalOpenPackageComponent } from './home/navbar/openPackage/modalOpenPackage/modalOpenPackage.component';
 import { CardDisplayComponent } from './home/game/cardDisplay/cardDisplay.component';
 import { ModalCardWindowComponent } from './home/navbar/openCards/modalCardWindow/modalCardWindow.component';
+import { ModalMapDungeonComponent } from './home/stage/baseMap/modalMap/modalMapDungeon/modalMapDungeon.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ModalCardWindowComponent } from './home/navbar/openCards/modalCardWindo
     OpenMapComponent,
     OpenCardsComponent,
     ModalOpenPackageComponent,
+    ModalMapDungeonComponent,
     CardDisplayComponent,
     NewGameComponent,
     ModalCardWindowComponent,

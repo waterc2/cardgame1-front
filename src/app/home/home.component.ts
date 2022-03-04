@@ -22,34 +22,26 @@ export class HomeComponent implements OnInit {
     this.apiService.getStage$().subscribe((next) => {
       setTimeout(() => {
         this.stage = next.stage;
-        console.log(this.stage);
+        //console.log(this.stage);
         if (this.stage.f_id !== 0) {
           //load fight
         } else if (this.stage.d_id !== 0) {
           //load dungeon
-        } else {
-          //load map
-          this.apiService.getMapData$().subscribe((next) => {
-            setTimeout(() => {
-              this.currentMap = next.map;
-            }, 0);
-          });
         }
-        //this.changeStageByType(this.stage);
+        this.changeStageByType(this.stage);
       }, 0);
     });
   }
 
-  changeStageByType(s_type: any) {
-    console.log(s_type);
-    switch (s_type) {
+  changeStageByType(stage: gameStage) {
+    switch (stage.s_type) {
       case 1: //start a new game
         console.log('go to 1');
         this.router.navigate(['home/stage/newGame'], {
           skipLocationChange: true,
         });
         break;
-      case 10: //start a new game
+      case 10: //Open the map
         console.log('go to 10');
         this.router.navigate(['home/stage/baseMap'], {
           skipLocationChange: true,

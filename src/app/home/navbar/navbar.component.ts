@@ -5,6 +5,7 @@ import {
   faGift,
   faLayerGroup,
   faUser,
+  faGears
 } from '@fortawesome/free-solid-svg-icons';
 import { ApiService } from 'src/app/service/api.service';
 
@@ -18,6 +19,7 @@ export class NavbarComponent implements OnInit {
   faPackage = faGift;
   faCard = faLayerGroup;
   faAccount = faUser;
+  faGears = faGears;
   public availablePackage: number;
   public onhandCard: number;
   public availableCard: number;
@@ -49,7 +51,11 @@ export class NavbarComponent implements OnInit {
   }
 
   openMap() {
-    this.router.navigate(['home/navbar/openMap'], { skipLocationChange: true });
+    this.router.navigate(['home/stage/baseMap'], { skipLocationChange: true });
+  }
+
+  openUser() {
+    //this.router.navigate(['home/navbar/openUser'], { skipLocationChange: true });
   }
 
   ngOnInit() {

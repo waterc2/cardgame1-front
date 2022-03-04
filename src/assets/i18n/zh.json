@@ -19,7 +19,8 @@
     "cardCostTitle": "消耗能量水晶",
     "cardCostDesc": "卡牌需要使用能量水晶才能进入战场",
     "cardDamageTitle": "伤害",
-    "cardDamageDesc": "直接对能量体造成的伤害"
+    "cardDamageDesc": "直接对能量体造成的伤害",
+    "youneed12card": "你需要有至少12张手卡来开始战斗"
   },
   "common": {
     "close": "关闭",
@@ -28,6 +29,9 @@
     "decompose": "分解",
     "putIntoHand": "放入手牌",
     "cardInHand": "手牌",
+    "startDungeon": "开始冒险",
+    "thinkItAgain": "再想想",
+    "startDungeonTitle": "进入冒险地图",
     "theLastCard": "最后一张"
   }
 }
