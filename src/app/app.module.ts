@@ -31,6 +31,9 @@ import { CardDisplayComponent } from './home/game/cardDisplay/cardDisplay.compon
 import { ModalCardWindowComponent } from './home/navbar/openCards/modalCardWindow/modalCardWindow.component';
 import { ModalMapDungeonComponent } from './home/stage/baseMap/modalMap/modalMapDungeon/modalMapDungeon.component';
 
+
+//import * as PIXI from '../../node_modules/pixi.js';
+
 @NgModule({
   declarations: [
     AppComponent,

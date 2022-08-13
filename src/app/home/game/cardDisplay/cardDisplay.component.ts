@@ -1,19 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { baseCardMode, GlobalConstants } from 'src/app/share/models';
-import {
-  faDotCircle,
-  faGem,
-  faAtom,
-  faBolt,
-  faStarOfDavid,
-  faHourglass,
-  faHourglassEnd,
-  faPooStorm,
-  faSkullCrossbones,
-  faSun,
-  faHeartBroken,
-  faCrosshairs,
-} from '@fortawesome/free-solid-svg-icons';
+import * as PIXI from 'pixi.js'
 
 @Component({
   selector: 'app-cardDisplay',
@@ -23,21 +10,8 @@ import {
 export class CardDisplayComponent implements OnInit {
   @Input() card: baseCardMode;
   @Input() cardSize: number;
-  faDotCircle = faDotCircle;
-  faGem = faGem;
-  faAtom = faAtom;
-  faBolt = faBolt;
-  faStarOfDavid = faStarOfDavid;
-  faHourglass = faHourglass;
-  faHourglassEnd = faHourglassEnd;
-  faPooStorm = faPooStorm;
-  faSkullCrossbones = faSkullCrossbones;
-  faSun = faSun;
-  faHeartBroken = faHeartBroken;
-  faCrosshairs = faCrosshairs;
 
-  specialHeight: number;
-  bigCard: number = 1;
+  id: string;
   frameImage: string[];
   titleColor: string;
   className: string;
@@ -53,14 +27,11 @@ export class CardDisplayComponent implements OnInit {
   iconHealth: string = GlobalConstants.imageURL + '/icons/health.svg';
   iconSpirit: string = GlobalConstants.imageURL + '/icons/spirit.svg';
 
-  constructor() {}
+  constructor(private elRef: ElementRef) { }
+
+
 
   ngOnInit() {
-    if (this.cardSize === 50) {
-      this.bigCard = 0;
-    } else {
-      this.specialHeight = 400;
-    }
     this.frameImage = [
       GlobalConstants.imageURL + '/assets/frame1_0.png',
       GlobalConstants.imageURL + '/assets/frame1_1.png',
@@ -79,35 +50,26 @@ export class CardDisplayComponent implements OnInit {
     this.attackColor = 'valueFont' + this.card.attackColor;
     this.speedColor = 'valueFont' + this.card.speedColor;
     this.spiritColor = 'valueFont' + this.card.spiritColor;
-  }
 
-  getIcon(index: number) {
-    switch (index) {
-      case 11:
-        return this.faBolt;
-      case 12:
-      case 14:
-      case 15:
-        return this.faPooStorm;
-      case 21:
-      case 22:
-      case 23:
-        return this.faSun;
-      case 31:
-        return this.faStarOfDavid;
-      case 32:
-        return this.faHeartBroken;
-      case 33:
-        return this.faSkullCrossbones;
-      case 41:
-        return this.faHourglass;
-      case 42:
-        return this.faAtom;
-        case 43:
-      return this.faHourglassEnd;
-        case 100:
-      return this.faCrosshairs;
-    }
-    return this.faDotCircle;
+    const app = new PIXI.Application({ width: 100, height:100,backgroundColor: 0xffffff,  resolution: window.devicePixelRatio || 1 });
+
+    this.elRef.nativeElement.firstChild.appendChild(app.view);
+
+
+    const cardContainer = new PIXI.Container();
+
+
+    const frame = PIXI.Sprite.from(this.frameImage[this.card.rarity]);
+    frame.position.set(10,10);
+    frame.scale.set(0.25);
+
+    const card = PIXI.Sprite.from(this.card.image);
+    card.position.set(20,30);
+    card.scale.set(0.25);
+    cardContainer.addChild(card);
+    cardContainer.addChild(frame);
+    // cardContainer.scale.set(0.5);
+    app.stage.addChild(cardContainer);
+    
   }
 }
