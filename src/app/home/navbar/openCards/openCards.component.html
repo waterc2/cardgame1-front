@@ -1,17 +1,8 @@
 <app-navbar></app-navbar>
-
-<div class="testimonial-group">
-  <div
-    class="allCardGridHand"
-    *ngFor="let card of allHandCards; index as i"
-    role="button"
-    (click)="cardWindow(i, 0)"
-    [@animateDestroy]="'in'"
-  >
-    <app-cardDisplay [card]="card" [cardSize]="50"></app-cardDisplay>
-  </div>
+<div class="allCardGrid" #allCardDiv>
+  
 </div>
-<div *ngIf="allCards">
+<!-- <div *ngIf="allCards">
   <div
     class="allCardGrid"
     *ngFor="let card of allCards; index as i"
@@ -21,4 +12,4 @@
   >
     <app-cardDisplay [card]="card" [cardSize]="50"></app-cardDisplay>
   </div>
-</div>
+</div> -->

@@ -52,61 +52,65 @@ export class CardDisplayComponent implements OnInit {
     this.attackColor = 'valueFont' + this.card.attackColor;
     this.speedColor = 'valueFont' + this.card.speedColor;
     this.spiritColor = 'valueFont' + this.card.spiritColor;
-
-    const app = new PIXI.Application({ width: this.cardSize * 2, height: this.cardSize * 2, backgroundColor: 0xffffff, resolution: window.devicePixelRatio || 1 });
-
-    this.elRef.nativeElement.firstChild.appendChild(app.view);
-
-
+    //Start PIXI JS code
+    let renderer = new PIXI.Application({ 
+      width: this.cardSize * 4, height: this.cardSize * 4, backgroundColor: 0xffffff,
+      autoDensity:true,
+      resolution:window.devicePixelRatio,
+      backgroundAlpha:0,
+    });
     const cardContainer = new PIXI.Container();
+    
     let nameColor = "black";
     if(this.card.rarity>1){
       nameColor = "white";
     }
 
-    const frame = PIXI.Sprite.from(this.frameImage[this.card.rarity]);
-    frame.position.set(15, 5);
-    frame.scale.set(0.25);
+    const frameImage = PIXI.Sprite.from(this.frameImage[this.card.rarity]);
+    frameImage.position.set(100, 100);
+    frameImage.anchor.set(0.5);
+    frameImage.scale.set(0.5);
 
-    const card = PIXI.Sprite.from(this.card.image);
-    card.position.set(24, 23);
-    card.scale.set(0.25);
-    cardContainer.addChild(card);
-    cardContainer.addChild(frame);
+    const cardImage = PIXI.Sprite.from(this.card.image);
+    cardImage.position.set(100, 100+7);
+    cardImage.scale.set(0.48);
+    cardImage.anchor.set(0.5);
+    cardContainer.addChild(cardImage);
+    cardContainer.addChild(frameImage);
 
     var cardName = new PIXI.Text(this.card.name,//+"["+this.translateService.instant(this.className)+"]",
       {
-        fontFamily: 'Helvetica',
-        fontSize: 6,
+        fontFamily: "Hiragino Sans GB",
+        fontSize: 10,
         fontWeight: '500',
         fill: nameColor,
         align: 'center'
       });
     cardName.anchor.set(0.5, 0.5);
-    cardName.position.set(52, 20);
+    cardName.position.set(100, 35);
     cardContainer.addChild(cardName);
 
     if (this.card.abrasion !== 0) {
       var abrasion = new PIXI.Graphics();
       abrasion.beginFill(0x37a7ed);
       abrasion.drawRoundedRect(
-        75,
-        10,
-        12,
-        8,
+        146,
+        17,
+        28,
+        16,
         20
       );
       abrasion.endFill();
       var abrasionNumber = new PIXI.Text(this.card.abrasion,//+"["+this.translateService.instant(this.className)+"]",
         {
-          fontFamily: 'Helvetica',
-          fontSize: 5,
+          fontFamily: "tahoma,sans-serif",
+          fontSize: 11,
           //fontWeight: '600',
-          fill: "black",
+          fill: "white",
           align: 'center'
         });
       abrasionNumber.anchor.set(0.5, 0.5);
-      abrasionNumber.position.set(81, 14);
+      abrasionNumber.position.set(160, 25);
       cardContainer.addChild(abrasion);
       cardContainer.addChild(abrasionNumber);
     }
@@ -115,23 +119,23 @@ export class CardDisplayComponent implements OnInit {
     var health = new PIXI.Graphics();
     health.beginFill(0xed5537);
     health.drawRoundedRect(
-      16,
-      86,
-      16,
-      10,
+      22,
+      171,
+      35,
+      18,
       30
     );
     health.endFill();
     var healthNumber = new PIXI.Text(this.card.health,
       {
-        fontFamily: 'Helvetica',
-        fontSize: 6,
+        fontFamily: "tahoma,sans-serif",
+        fontSize: 12,
         //fontWeight: '600',
-        fill: "black",
+        fill: "white",
         align: 'center'
       });
     healthNumber.anchor.set(0.5, 0.5);
-    healthNumber.position.set(24, 91);
+    healthNumber.position.set(40, 180);
     cardContainer.addChild(health);
     cardContainer.addChild(healthNumber);
 
@@ -139,23 +143,23 @@ export class CardDisplayComponent implements OnInit {
     var attack = new PIXI.Graphics();
     attack.beginFill(0xfc0303);
     attack.drawRoundedRect(
-      18,
-      40,
-      12,
-      8,
-      20
+      26,
+      70,
+      25,
+      14,
+      10
     );
     attack.endFill();
     var attackNumber = new PIXI.Text(this.card.attack,
       {
-        fontFamily: 'Helvetica',
-        fontSize: 6,
+        fontFamily: "tahoma,sans-serif",
+        fontSize: 10,
         //fontWeight: '600',
-        fill: "black",
+        fill: "white",
         align: 'center'
       });
     attackNumber.anchor.set(0.5, 0.5);
-    attackNumber.position.set(24, 44);
+    attackNumber.position.set(38.5, 76.5);
     cardContainer.addChild(attack);
     cardContainer.addChild(attackNumber);
 
@@ -163,23 +167,23 @@ export class CardDisplayComponent implements OnInit {
     var defense = new PIXI.Graphics();
     defense.beginFill(0xd1a221);
     defense.drawRoundedRect(
-      18,
-      52,
-      12,
-      8,
-      20
+      26,
+      95,
+      25,
+      14,
+      10
     );
     defense.endFill();
     var defenseNumber = new PIXI.Text(this.card.defense,
       {
-        fontFamily: 'Helvetica',
-        fontSize: 6,
+        fontFamily: "tahoma,sans-serif",
+        fontSize: 10,
         //fontWeight: '600',
-        fill: "black",
+        fill: "white",
         align: 'center'
       });
     defenseNumber.anchor.set(0.5, 0.5);
-    defenseNumber.position.set(24, 56);
+    defenseNumber.position.set(38.5, 101.5);
     cardContainer.addChild(defense);
     cardContainer.addChild(defenseNumber);
 
@@ -187,23 +191,23 @@ export class CardDisplayComponent implements OnInit {
     var speed = new PIXI.Graphics();
     speed.beginFill(0x47d121);
     speed.drawRoundedRect(
-      18,
-      64,
-      12,
-      8,
-      20
+      26,
+      120,
+      25,
+      14,
+      10
     );
     speed.endFill();
     var speedNumber = new PIXI.Text(this.card.speed,
       {
-        fontFamily: 'Helvetica',
-        fontSize: 6,
+        fontFamily: "tahoma,sans-serif",
+        fontSize: 10,
         //fontWeight: '600',
-        fill: "black",
+        fill: "white",
         align: 'center'
       });
     speedNumber.anchor.set(0.5, 0.5);
-    speedNumber.position.set(24, 68);
+    speedNumber.position.set(38.5, 126.5);
     cardContainer.addChild(speed);
     cardContainer.addChild(speedNumber);
 
@@ -212,31 +216,48 @@ export class CardDisplayComponent implements OnInit {
       var spirit = new PIXI.Graphics();
       spirit.beginFill(0xb220d6);
       spirit.drawRoundedRect(
-        18,
-        76,
-        12,
-        8,
-        20
+        26,
+        145,
+        25,
+        14,
+        10
       );
       spirit.endFill();
       var spiritNumber = new PIXI.Text(this.card.spirit,
         {
-          fontFamily: 'Helvetica',
-          fontSize: 6,
+          fontFamily: "tahoma,sans-serif",
+          fontSize: 10,
           //fontWeight: '600',
-          fill: "black",
+          fill: "white",
           align: 'center'
         });
       spiritNumber.anchor.set(0.5, 0.5);
-      spiritNumber.position.set(24, 80);
+      spiritNumber.position.set(38.5, 151.5);
       cardContainer.addChild(spirit);
       cardContainer.addChild(spiritNumber);
     }
-
-
+    //Set card container scale
     cardContainer.scale.set(this.cardSize / 50);
-    app.stage.addChild(cardContainer);
 
-    //app.stop();
+    //Define Ticker
+    // const ticker = new PIXI.Ticker();
+    // ticker.add(animate);
+    // ticker.start();
+
+    //function animate(){
+      //renderer.render(cardContainer);
+    //}
+    const image = renderer.renderer.plugins.extract.canvas(cardContainer);
+    renderer.destroy(true);
+    var sourceContext = image.getContext('2d');
+    var extractCanvas = document.createElement('canvas');
+    var extractContext = extractCanvas.getContext('2d');
+    var imageData = sourceContext.getImageData(0, 0, this.cardSize*4, this.cardSize*4);
+
+    extractCanvas.width = this.cardSize*4;
+    extractCanvas.height = this.cardSize*4;
+    extractContext.putImageData(imageData, 0, 0);
+    this.elRef.nativeElement.firstChild.appendChild(extractCanvas);
   }
+
 }
