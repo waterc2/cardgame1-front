@@ -28,7 +28,7 @@
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "@pixi/app": "*",
-    "@pixi/display": "^7.0.2",
+    "@pixi/display": "^7.0.3",
     "@pixi/sprite": "*",
     "@popperjs/core": "^2.11.6",
     "@types/offscreencanvas": "^2019.7.0",
@@ -36,11 +36,10 @@
     "ngx-logger": "^5.0.11",
     "ngx-spinner": "^14.0.0",
     "ngx-toastr": "^15.2.1",
-    "pixi-projection": "^0.4.4",
-    "pixi.js": "^7.0.2",
+    "pixi.js": "^7.0.3",
     "rxjs": "~7.5.7",
     "tslib": "^2.4.1",
-    "zone.js": "~0.11.8"
+    "zone.js": "~0.12.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.2.8",

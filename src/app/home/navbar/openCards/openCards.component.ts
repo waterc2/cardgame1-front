@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import * as PIXI from 'pixi.js'
-import * as PIXIprojection from 'pixi-projection'
 //import * as application from '@pixi/display';
 
 
@@ -189,6 +188,24 @@ export class OpenCardsComponent implements OnInit {
     cardNumberText.position.set(50, 12);
     handCardTitleContainer.addChild(cardNumberText);
 
+    let x = this.baseCardWidth, y = 0;
+    for (let key of this.allHandCards.keys()) {
+      let cardContainer = this.pixiService.drawCard(this.allHandCards[key], this.baseCardHeight);
+      cardContainer.cursor = 'pointer';
+      cardContainer.position.set(x, y);
+      cardContainer.on('pointerdown', () => {
+        this.onClickGetLargeOne(this.allHandCards[key], key, false);
+      });
+      this.allHandCardContainer.addChild(cardContainer);
+      this.allCardDiv.nativeElement.appendChild(this.renderer.view);
+      x += this.baseCardWidth;
+      if ((x + this.baseCardWidth) > this.windowInnerWidth) {
+        x = 0;
+        y += this.baseCardHeight
+      }
+    }
+
+
     // all Card Title
     const allCarditleContainer = new PIXI.Container();
     this.allCardContainer.addChild(allCarditleContainer);
@@ -222,9 +239,10 @@ export class OpenCardsComponent implements OnInit {
     allCardNumberText.position.set(50, 12);
     allCarditleContainer.addChild(allCardNumberText);
 
-    let x = this.baseCardWidth, y = 0;
+    x = this.baseCardWidth, y = 0;
     for (let key of this.allCards.keys()) {
       let cardContainer = this.pixiService.drawCard(this.allCards[key], this.baseCardHeight);
+      cardContainer.cursor = 'pointer';
       cardContainer.position.set(x, y);
       cardContainer.on('pointerdown', () => {
         this.onClickGetLargeOne(this.allCards[key], key);
@@ -252,7 +270,7 @@ export class OpenCardsComponent implements OnInit {
     this.renderer.stage.removeChild(largeContainer);
   }
 
-  private onClickGetLargeOne(card: baseCardMode, key:number) {
+  private onClickGetLargeOne(card: baseCardMode, key:number,showButton:boolean = true) {
     //Mask
     const backgroundMask = new PIXI.Graphics();
     backgroundMask.beginFill(0xeeeeee, 0.5);
@@ -279,11 +297,14 @@ export class OpenCardsComponent implements OnInit {
     largeCardContainer.addChild(cardContainerLarge);
 
     //bottom buttons 
+    if(showButton){
+      
     const addToHandButton = new PIXI.Graphics();
     addToHandButton.beginFill(0x0c753f);
     addToHandButton.drawRoundedRect(this.baseCardWidth * 2.5 - 50, this.baseCardHeight * 1.5 * 2 - 40, 100, 30, 10);
     addToHandButton.endFill();
     addToHandButton.interactive = true;
+    addToHandButton.cursor = 'pointer';
     const addCardToHandText = new PIXI.Text("加入手牌",
       {
         fontFamily: "Hiragino Sans GB",
@@ -308,6 +329,7 @@ export class OpenCardsComponent implements OnInit {
     });
     largeCardContainer.addChild(addToHandButton);
 
+  }
 
 
 

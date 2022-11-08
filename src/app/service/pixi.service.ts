@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as PIXI from 'pixi.js'
 import { baseCardMode, GlobalConstants } from 'src/app/share/models';
-//import * as PIXIprojection from 'pixi-projection'
 
 @Injectable({
     providedIn: 'root'
