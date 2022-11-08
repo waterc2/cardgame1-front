@@ -204,7 +204,6 @@ export class pixiService {
 
         //Set interaction
         cardContainer.interactive = true;
-        cardContainer.buttonMode = true;
 
         return cardContainer;
   }
@@ -224,11 +223,6 @@ export class pixiService {
       } else {
         titleColor = 'blanchedalmond';
       }
-      let className = 'gameBase.cardClassName_' + card.class;
-      let defenseColor = 'valueFont' + card.defenseColor;
-      let attackColor = 'valueFont' + card.attackColor;
-      let speedColor = 'valueFont' + card.speedColor;
-      let spiritColor = 'valueFont' + card.spiritColor;
       //Start PIXI JS code
       const cardContainer = new PIXI.Container();
       //Background
@@ -416,7 +410,6 @@ export class pixiService {
 
       //Set interaction
       cardContainer.interactive = true;
-      cardContainer.buttonMode = true;
       return cardContainer;
 }
 }

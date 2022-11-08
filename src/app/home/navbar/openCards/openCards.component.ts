@@ -259,7 +259,6 @@ export class OpenCardsComponent implements OnInit {
     backgroundMask.drawRoundedRect(0, 0, parseInt(this.renderer.view.style.width.slice(0, -2)), parseInt(this.renderer.view.style.height.slice(0, -2)), 0);
     backgroundMask.endFill();
     backgroundMask.interactive = true;
-    backgroundMask.buttonMode = true;
     this.renderer.stage.addChild(backgroundMask);
 
 
@@ -285,7 +284,6 @@ export class OpenCardsComponent implements OnInit {
     addToHandButton.drawRoundedRect(this.baseCardWidth * 2.5 - 50, this.baseCardHeight * 1.5 * 2 - 40, 100, 30, 10);
     addToHandButton.endFill();
     addToHandButton.interactive = true;
-    addToHandButton.buttonMode = true;
     const addCardToHandText = new PIXI.Text("加入手牌",
       {
         fontFamily: "Hiragino Sans GB",
