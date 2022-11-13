@@ -10,6 +10,7 @@ import { OpenPackageComponent } from './home/navbar/openPackage/openPackage.comp
 import { BaseMapComponent } from './home/stage/baseMap/baseMap.component';
 import { NewGameComponent } from './home/stage/newGame/newGame.component';
 import { NavbarComponent } from './home/navbar/navbar.component';
+import { FightComponent } from './home/stage/fight/fight.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthService] },
@@ -23,6 +24,11 @@ const routes: Routes = [
   {
     path: 'home/stage/baseMap',
     component: BaseMapComponent,
+    canActivate: [AuthService],
+  },
+  {
+    path: 'home/stage/fight',
+    component: FightComponent,
     canActivate: [AuthService],
   },
   {

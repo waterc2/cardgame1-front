@@ -36,17 +36,23 @@ export class HomeComponent implements OnInit {
   changeStageByType(stage: gameStage) {
     switch (stage.s_type) {
       case 1: //start a new game
-        console.log('go to 1');
+        //console.log('go to 1');
         this.router.navigate(['home/stage/newGame'], {
           skipLocationChange: true,
         });
         break;
-      case 10: //Open the map
-        console.log('go to 10');
-        this.router.navigate(['home/stage/baseMap'], {
-          skipLocationChange: true,
-        });
-        break;
+        case 10: //Open the map
+          //console.log('go to 10');
+          this.router.navigate(['home/stage/baseMap'], {
+            skipLocationChange: true,
+          });
+          break;
+        case 100: //Load battle
+            //console.log('go to 10');
+            this.router.navigate(['home/stage/fight'], {
+              skipLocationChange: true,
+            });
+            break;
     }
   }
 }

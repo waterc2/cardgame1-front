@@ -23,12 +23,12 @@ import { SignupComponent } from './signup/signup.component';
 import { NavbarComponent } from './home/navbar/navbar.component';
 import { NewGameComponent } from './home/stage/newGame/newGame.component';
 import { BaseMapComponent } from './home/stage/baseMap/baseMap.component';
+import { FightComponent } from './home/stage/fight/fight.component';
 import { OpenPackageComponent } from './home/navbar/openPackage/openPackage.component';
 import { OpenCardsComponent } from './home/navbar/openCards/openCards.component';
 import { OpenMapComponent } from './home/navbar/openMap/openMap.component';
 import { ModalOpenPackageComponent } from './home/navbar/openPackage/modalOpenPackage/modalOpenPackage.component';
 import { CardDisplayComponent } from './home/game/cardDisplay/cardDisplay.component';
-import { ModalCardWindowComponent } from './home/navbar/openCards/modalCardWindow/modalCardWindow.component';
 import { ModalMapDungeonComponent } from './home/stage/baseMap/modalMap/modalMapDungeon/modalMapDungeon.component';
 
 
@@ -42,6 +42,7 @@ import { ModalMapDungeonComponent } from './home/stage/baseMap/modalMap/modalMap
     SignupComponent,
     NavbarComponent,
     BaseMapComponent,
+    FightComponent,
     OpenPackageComponent,
     OpenMapComponent,
     OpenCardsComponent,
@@ -49,7 +50,6 @@ import { ModalMapDungeonComponent } from './home/stage/baseMap/modalMap/modalMap
     ModalMapDungeonComponent,
     CardDisplayComponent,
     NewGameComponent,
-    ModalCardWindowComponent,
   ],
   imports: [
     BrowserModule,

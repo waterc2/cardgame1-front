@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -54,6 +52,11 @@ export class ApiService {
   getMapData$() {
     return this.httpClient.get<any>(`${this.baseUrl}/api/getMapData`);
   }
+
+  getFight$() {
+    return this.httpClient.get<any>(`${this.baseUrl}/api/getFight`);
+  }
+
 
   postOpenPackage$(p_id: number) {
     let reqData = { p_id: p_id };

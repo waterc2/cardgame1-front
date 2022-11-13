@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   faMapMarked,
@@ -8,6 +8,7 @@ import {
   faGears
 } from '@fortawesome/free-solid-svg-icons';
 import { ApiService } from 'src/app/service/api.service';
+import { gameStage } from 'src/app/share/models';
 
 @Component({
   selector: 'app-navbar',
@@ -23,6 +24,8 @@ export class NavbarComponent implements OnInit {
   public availablePackage: number;
   public onhandCard: number;
   public availableCard: number;
+  //TODO: don't input for others, call API to get stage
+  @Input() disableNavbar:boolean = false;
 
   constructor(private apiService: ApiService, public router: Router) {}
 

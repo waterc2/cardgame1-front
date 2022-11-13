@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
 import * as PIXI from 'pixi.js'
 import { baseCardMode, GlobalConstants } from 'src/app/share/models';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
     providedIn: 'root'
   })
 
 export class pixiService {
+  
+  constructor(
+    private translateService: TranslateService,
+ ) { }
+
   drawCard(card: baseCardMode,baseCardWidth:number = 200){
       const cardFrameImage = [
           GlobalConstants.imageURL + '/assets/frame1_0.png',
@@ -207,7 +213,7 @@ export class pixiService {
         return cardContainer;
   }
   
-  drawCardLarge(card: baseCardMode,baseCardWidth:number = 200,pixi:PIXI.Application){
+  drawCardLarge(card: baseCardMode, baseCardWidth:number = 200,pixi:PIXI.Application){
     const cardFrameImage = [
         GlobalConstants.imageURL + '/assets/frame1_0.png',
         GlobalConstants.imageURL + '/assets/frame1_1.png',
@@ -246,7 +252,7 @@ export class pixiService {
       cardContainer.addChild(cardImage);
       cardContainer.addChild(frameImage);
   
-      const cardName = new PIXI.Text(card.name,//+"["+this.translateService.instant(this.className)+"]",
+      const cardName = new PIXI.Text(card.name+" ["+this.translateService.instant("gameBase.cardClassName_" + card.class)+"]",
         {
           fontFamily: "Hiragino Sans GB",
           fontSize: 10,
@@ -269,7 +275,7 @@ export class pixiService {
           20
         );
         abrasion.endFill();
-        const abrasionNumber = new PIXI.Text(card.abrasion,//+"["+this.translateService.instant(this.className)+"]",
+        const abrasionNumber = new PIXI.Text(card.abrasion,
           {
             fontFamily: "tahoma,sans-serif",
             fontSize: 11,
@@ -405,7 +411,7 @@ export class pixiService {
         cardContainer.addChild(spiritNumber);
       }
       //Set card container scale
-      //cardContainer.scale.set(baseCardWidth/200);
+      cardContainer.scale.set(baseCardWidth/200);
 
       //Set interaction
       cardContainer.interactive = true;

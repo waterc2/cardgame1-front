@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       .loginUser(this.form.email.value, this.form.password.value)
       .subscribe(
         (data: any) => {
-          console.log(data);
+          //console.log(data);
           if (data.user.u_id) {
             this.router.navigate(['']);
           }

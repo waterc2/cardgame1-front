@@ -1,41 +1,13 @@
-<div [ngSwitch]="openStatus">
-  <div *ngSwitchDefault>
-    <div class="modal-body">
-      <img src="{{ package.image }}" class="rounded mx-auto d-block" />
-      <p class="text-center">{{ package.name | translate }}</p>
-      <p class="text-center">
-        {{ "gameBase.cardValue" | translate }}: {{ package.value }}
-        {{ package.class }}
-      </p>
-    </div>
-    <div class="modal-footer">
-      <button
-        type="button"
-        class="btn btn-outline-dark me-md-2 btn-sm"
-        (click)="activeModal.close('Close click')"
-      >
-        {{ "common.close" | translate }}
-      </button>
-      <button
-        type="button"
-        class="btn btn-primary btn-sm"
-        (click)="confirmOpen(package.id)"
-      >
-        {{ "common.open" | translate }}
-      </button>
-    </div>
+<div class="allCardGrid" #openCardDiv>
+  <div class="modal-body">
+    <img src="{{ package.image }}" class="rounded mx-auto d-block" />
+    <p class="text-center">{{ package.name | translate }}</p>
+    <p class="text-center"> {{ "gameBase.cardValue" | translate }}: {{ package.value }} {{ package.class }} </p>
   </div>
-
-  <div *ngSwitchCase="2">
-    <ng-template ngFor let-card [ngForOf]="cards" let-i="index">
-      <div *ngIf="i === currentCardNumber">
-        <app-cardDisplay [card]="card" [cardSize]="100"></app-cardDisplay>
-      </div>
-    </ng-template>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-primary btn-sm" (click)="nextCard()">
-        {{ currentNextButton | translate }}
-      </button>
-    </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark me-md-2 btn-sm" (click)="activeModal.close('Close click')"> {{
+      "common.close" | translate }} </button>
+    <button type="button" class="btn btn-primary btn-sm" (click)="confirmOpen(package.id)"> {{ "common.open" | translate
+      }} </button>
   </div>
 </div>

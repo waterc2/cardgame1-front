@@ -39,13 +39,13 @@ export class BaseMapComponent implements OnInit {
     this.apiService.getMapData$().subscribe((next) => {
       setTimeout(() => {
         this.currentMap = next.map
-        console.log(this.currentMap);
+        //console.log(this.currentMap);
       }, 0);
     });
   }
 
   mapEvent(mapEventIndex: number) {
-    console.log(this.currentMap['map_data'][mapEventIndex]);
+    console.log(this.currentMap['map_data']);
     switch (this.currentMap['map_data'][mapEventIndex].e_type) {
       case 2://open dungeon window
 
@@ -61,10 +61,10 @@ export class BaseMapComponent implements OnInit {
           if (message === "Ok") {
             //start
 
-            this.apiService.postTriggerMapEvent$(mapEventIndex)
+            this.apiService.postTriggerMapEvent$(this.currentMap['map_data'][mapEventIndex].event_id)
               .subscribe((next) => {
                 setTimeout(() => {
-                  console.log(next);
+                  //console.log(next);
                 }, 0);
               }
               );
