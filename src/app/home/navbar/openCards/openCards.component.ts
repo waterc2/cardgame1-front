@@ -246,7 +246,7 @@ export class OpenCardsComponent implements OnInit {
       largeCardBackgroundPanel.beginFill(0xcccccc,);
       largeCardBackgroundPanel.drawRoundedRect(2, 2, this.baseCardWidth * 2.5 * 2, this.baseCardHeight * 1.5 * 2, 10);
       largeCardBackgroundPanel.endFill();
-      let cardContainerLarge = this.pixiService.drawCardLarge(card, this.baseCardWidth*2, this.renderer);
+      let cardContainerLarge = this.pixiService.drawCardLarge(card, this.baseCardWidth*2);
       cardContainerLarge.position.set(5, this.baseCardHeight / 2);
       largeCardContainer.addChild(largeCardBackgroundPanel);
       largeCardContainer.addChild(cardContainerLarge);

@@ -65,3 +65,23 @@ export class baseMap {
   map_name: string;
   map_style: string;
 }
+
+export class fightMode {
+  boardCards:Array<any>;
+  boardStatus:Array<any>;
+  enemyStatus:fightStatusMode;
+  myHandCards:Array<baseCardMode>;
+  myStatus:fightStatusMode;
+  stageData:fightStageMode;
+}
+
+export class fightStatusMode{
+  currentEnergy: number;
+  currentHP: number;
+  fullHP: number;
+  cardLeft:number;
+}
+
+export class fightStageMode{
+  currentStage:number;
+}

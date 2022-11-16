@@ -70,7 +70,7 @@ export class ModalOpenPackageComponent implements OnInit {
 
    private drawLargeCard(card: baseCardMode, hasNext: boolean = true) {
       const baseCardContainer = new PIXI.Container();
-      let cardContainerLarge = this.pixiService.drawCardLarge(card, this.windowInnerWidth / 2.5, this.renderer);
+      let cardContainerLarge = this.pixiService.drawCardLarge(card, this.windowInnerWidth / 2.5);
       cardContainerLarge.position.set(5, this.windowInnerWidth / 10);
 
       const blurFilter1 = new PIXI.filters.BlurFilter();
