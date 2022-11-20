@@ -416,65 +416,6 @@ export class pixiService {
       return cardContainer;
    }
 
-   drawCardsMultiSelect(cards: Array<baseCardMode>, pixi: PIXI.Application, cardWidth: number, screenWidth: number, maxSelect: number, haveToSelect = false) {
-      const cardSelectContainer = new PIXI.Container();
-      let result: number[] = [];
-      //left indent
-      let currentX = cardWidth / 4, currentY = 0;
-      
-      for(let i of cards.keys())
-      {
-         if(i < maxSelect){
-            result[i] = 1;
-         }else{
-            result[i] = 0;
-         }
-      }
-      for (let key of cards.keys()) {
-         let cardWithButtonContainer = new PIXI.Container();
-         let cardContainer = this.drawCard(cards[key], cardWidth);
-         cardContainer.cursor = 'pointer';
-         cardContainer.position.set(currentX, currentY);
-         cardContainer.on('pointerdown', () => {
-            this.onClickGetLargeWithoutButton(cards[key], pixi, cardWidth, screenWidth);
-         });
-         cardWithButtonContainer.addChild(cardContainer);
-         const iconCheckbox_checkedTexture = PIXI.Texture.from(GlobalConstants.imageURL + '/icons/checkbox_checked.png');
-         const iconCheckbox_uncheckedTexture = PIXI.Texture.from(GlobalConstants.imageURL + '/icons/checkbox_unchecked.png');
-
-         let iconCheckbox: PIXI.Sprite;
-         if (result[key]) {
-            iconCheckbox = new PIXI.Sprite(iconCheckbox_checkedTexture)
-         } else {
-            iconCheckbox = new PIXI.Sprite(iconCheckbox_uncheckedTexture)
-         }
-         iconCheckbox.scale.set(cardWidth / 400);
-         iconCheckbox.interactive = true;
-         iconCheckbox.cursor = 'pointer';
-         iconCheckbox.on('pointerdown', () => {
-            if (result[key] == 1) {
-               result[key] = 0;
-               iconCheckbox.texture = iconCheckbox_uncheckedTexture;
-            } else {
-               result[key] = 1;
-               iconCheckbox.texture = iconCheckbox_checkedTexture;
-            }            
-         });
-
-         iconCheckbox.position.set(currentX + cardWidth / 2 - cardWidth / 8, currentY + cardWidth);
-
-         cardWithButtonContainer.addChild(iconCheckbox);
-
-         currentX += cardWidth;
-         if ((currentX + cardWidth) > screenWidth - cardWidth / 4) {
-            currentX = cardWidth / 4;
-            currentY += cardWidth * 1.5
-         }
-         cardSelectContainer.addChild(cardWithButtonContainer);
-      }
-
-      return cardSelectContainer;
-   }
 
    onClickGetLargeWithoutButton(card: baseCardMode, pixi: PIXI.Application, cardWidth: number, screenWidth: number) {
       //Mask
