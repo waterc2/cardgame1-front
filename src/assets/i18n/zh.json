@@ -29,6 +29,7 @@
   "common": {
     "close": "关闭",
     "open": "打开",
+    "confirm": "确定",
     "nextCard": "下一张",
     "decompose": "分解",
     "putIntoHand": "放入手牌",

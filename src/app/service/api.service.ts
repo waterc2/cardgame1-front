@@ -73,12 +73,18 @@ export class ApiService {
     );
   }
 
-
   postPutCardToHand$(c_id: number) {
     let reqData = { c_id: c_id };
     return this.httpClient.post<any>(
       `${this.baseUrl}/api/putCardToHand`,
       reqData
+    );
+  }  
+  
+  postSelectCards$(result:number[]) {
+    return this.httpClient.post<any>(
+      `${this.baseUrl}/api/postSelectCards`,
+      {result:result}
     );
   }
 

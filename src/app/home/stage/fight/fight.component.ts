@@ -49,7 +49,7 @@ export class FightComponent implements OnInit {
 		this.apiService.getFight$().subscribe((next) => {
 			setTimeout(() => {
 				this.fightData = next['fight'];
-				console.log(this.fightData);
+				console.log(this.fightData);				
 				this.drawBase();
 			}, 0);
 		});
@@ -80,15 +80,11 @@ export class FightComponent implements OnInit {
 		if (this.fightData.stageData.currentStage == 0) {
 			this.drawCardInitBase();
 		} else {
-
-			this.drawEnemyBase();
+			this.drawFight();
 		}
 		this.allCardDiv.nativeElement.appendChild(this.renderer.view);
 	}
-
 	drawCardInitBase() {
-		//this.popupBase
-
 		const pageTitleText = new PIXI.Text(this.translateService.instant('gameBase.selectInitCards'),
 			{
 				fontSize: this.baseMultiplier * 16,
@@ -101,7 +97,6 @@ export class FightComponent implements OnInit {
 		this.popupBase.addChild(pageTitleText);
 		this.renderer.stage.addChild(this.popupBase);
 		let cardSelectContainer: PIXI.Container;
-
 		cardSelectContainer = this.drawCardsMultiSelect(this.fightData.myHandCards, this.renderer, this.baseCardWidth * 1.5, this.windowInnerWidth, this.fightData.myHandCards.length);
 
 		cardSelectContainer.position.set(0, this.baseMultiplier * 60);
@@ -163,9 +158,62 @@ export class FightComponent implements OnInit {
 			}
 			cardSelectContainer.addChild(cardWithButtonContainer);
 		}
-		//Add submit button
+		//Add submit button		
+		const confirmButton = new PIXI.Graphics();
+		confirmButton.beginFill(0x0c753f);
+		confirmButton.drawRoundedRect(this.baseCardWidth * 2.5 - 50, currentY + cardWidth * 1.5, 100, 30, 10);
+		confirmButton.endFill();
+		confirmButton.interactive = true;
+		confirmButton.cursor = 'pointer';
+		const confirmText = new PIXI.Text(this.translateService.instant('common.confirm'),
+			{
+				fontFamily: "Hiragino Sans GB",
+				fontSize: 12,
+				fill: "white",
+				align: 'center',
+				strokeThickness: 1,
+				dropShadow: true,
+				dropShadowColor: '#aaaaaa',
+				dropShadowBlur: 2,
+				dropShadowAngle: Math.PI / 6,
+				dropShadowDistance: 4,
+				wordWrap: true,
+				wordWrapWidth: 440,
+				lineJoin: 'round',
+			});
+		confirmText.anchor.set(0.5)
+		confirmText.position.set(this.baseCardWidth * 2.5, currentY + cardWidth * 1.5 + 15);
+		confirmButton.addChild(confirmText);
+		confirmButton.on('pointerdown', () => {
+			this.apiService
+				.postSelectCards$(result)
+				.subscribe((next) => {
+					setTimeout(() => {
+						if (next.hasOwnProperty('error')) {
+						} else {
+							//try to delete all and reload the base
+							this.renderer.stage.removeChildren();
+							this.drawFight();
+						}
+					}, 0);
+				});
+		});
+		cardSelectContainer.addChild(confirmButton);
 		return cardSelectContainer;
 	}
+
+	drawFight()
+	{
+		this.drawEnemyBase();
+		
+	}
+
+	drawFightGround()
+	{
+		//this.fightGround
+
+	}
+
 	drawEnemyBase() {
 		this.iconHealth.anchor.set(0.5);
 		this.iconHealth.scale.set(0.25);
@@ -187,8 +235,8 @@ export class FightComponent implements OnInit {
 			});
 		enemyHealthText.anchor.set(0.5);
 		enemyHealthText.position.set(this.baseMultiplier * 40, this.baseMultiplier * 10);
+		enemyHealthText.name = 'currentHp';
 
-		//enemy health
 		const enemyCardsText = new PIXI.Text(this.fightData.enemyStatus.cardLeft,
 			{
 				fontSize: this.baseMultiplier * 12,
@@ -198,6 +246,7 @@ export class FightComponent implements OnInit {
 			});
 		enemyCardsText.anchor.set(0.5);
 		enemyCardsText.position.set(this.baseMultiplier * 100, this.baseMultiplier * 10);
+		enemyCardsText.name = 'cardLeft';
 
 		this.enemyBase.addChild(this.iconHealth);
 		this.enemyBase.addChild(enemyHealthText);
@@ -207,4 +256,10 @@ export class FightComponent implements OnInit {
 		this.renderer.stage.addChild(this.enemyBase);
 	}
 
+	updateEnemyCurrentHP()
+	{
+		let currentHPText :PIXI.Text;
+		currentHPText= this.enemyBase.getChildByName("currentHp");
+		currentHPText.text = this.fightData.enemyStatus.currentHP;	
+	}
 }
